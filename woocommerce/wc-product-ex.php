@@ -1,7 +1,5 @@
 <?php
 /**
- *
- *
  * @author Piotr Boguslawski
  */
 
@@ -38,7 +36,7 @@ class WC_Product_Ex extends WC_Product {
 	 * @return string
 	 */
 	public function get_categories( $sep = ', ', $before = '', $after = '', $orderby = 'name', $order = 'ASC' ) {
-		$cats = wc_get_product_terms( $this->id, 'product_cat', [
+		$cats  = wc_get_product_terms( $this->id, 'product_cat', [
 			'orderby' => $orderby,
 			'order'   => $order,
 			'fields'  => 'ids'
@@ -57,3 +55,4 @@ class WC_Product_Ex extends WC_Product {
 		return $before . join( $sep, $links ) . $after;
 	}
 }
+

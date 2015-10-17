@@ -29,6 +29,8 @@ if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
  *
  */
 function pbo_tools_initialize() {
+	load_plugin_textdomain( 'pbo-tools', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+
 	require_once( PBO_TOOLS_DIR . 'query-ex.php' );
 	$SE = new SearchEverything();
 
@@ -38,6 +40,7 @@ function pbo_tools_initialize() {
 		}
 	}
 	if ( is_woocommerce_activated() ) {
+		require_once( PBO_TOOLS_DIR . 'woocommerce/products.php' );
 		require_once( PBO_TOOLS_DIR . 'woocommerce/wc-product-ex.php' );
 	}
 
