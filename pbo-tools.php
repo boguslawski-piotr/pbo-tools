@@ -16,8 +16,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } // Exit if accessed directly
 
+define( 'PBO_TOOLS_VERSION', "1.0.0" );
 define( 'PBO_TOOLS', 1 );
+
 define( 'PBO_TOOLS_DIR', plugin_dir_path( __FILE__ ) );
+
+/**
+ * Pre-initialization
+ */
 
 require_once( PBO_TOOLS_DIR . 'user-device.php' );
 
@@ -25,8 +31,14 @@ if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 	PBO_User_Device::set_user_device_info( $_POST, true );
 }
 
+if ( ! function_exists( 'is_woocommerce_activated' ) ) {
+	function is_woocommerce_activated() {
+		return class_exists( 'woocommerce' ) ? true : false;
+	}
+}
+
 /**
- *
+ * Plugin initialization
  */
 function pbo_tools_initialize() {
 	load_plugin_textdomain( 'pbo-tools', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -34,11 +46,6 @@ function pbo_tools_initialize() {
 	require_once( PBO_TOOLS_DIR . 'query-ex.php' );
 	$SE = new SearchEverything();
 
-	if ( ! function_exists( 'is_woocommerce_activated' ) ) {
-		function is_woocommerce_activated() {
-			return class_exists( 'woocommerce' ) ? true : false;
-		}
-	}
 	if ( is_woocommerce_activated() ) {
 		require_once( PBO_TOOLS_DIR . 'woocommerce/products.php' );
 		require_once( PBO_TOOLS_DIR . 'woocommerce/wc-product-ex.php' );

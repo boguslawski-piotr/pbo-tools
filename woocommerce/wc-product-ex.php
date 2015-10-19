@@ -3,9 +3,6 @@
  * @author Piotr Boguslawski
  */
 
-/**
- * Class WC_Product_Ex extends WC_Product class ;)
- */
 class WC_Product_Ex extends WC_Product {
 	/**
 	 * Some kind of copy constructor with type casting ;)
