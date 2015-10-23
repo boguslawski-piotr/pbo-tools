@@ -56,8 +56,6 @@ class PBO_User_Device {
 					"pbo_document_width=" + $(document).width(),
 					function (response) {
 						//alert(response);
-						// TODO: jak to rozwiazac bez przeladowywania strony ???
-						location.href = '<?php echo home_url(); ?>';
 					}
 				);
 			});
